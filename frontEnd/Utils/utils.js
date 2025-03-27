@@ -1,1 +1,1 @@
-export const BACKEND_URL = "https://learnify-xbk0.onrender.com";
+export const BACKEND_URL = "https://learnify-k76w.onrender.com";
