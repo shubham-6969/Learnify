@@ -170,7 +170,7 @@ function Home() {
                       <h2 className="text-xl font-bold text-white">
                         {course.title}
                       </h2>
-                      <Link to="/courses" className="mt-4 bg-orange-500 text-white py-2 px-4 rounded-full hover:bg-blue-500 duration-300">
+                      <Link to={"/courses"} className="mt-4 bg-orange-500 text-white py-2 px-4 rounded-full hover:bg-blue-500 duration-300">
                         Enroll Now
                       </Link>
                     </div>
