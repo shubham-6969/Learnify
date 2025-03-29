@@ -4,7 +4,9 @@ import { z } from "zod";
 import Config from "../config.js";
 import { Admin } from "../models/admin.model.js";
 
-export const signUp = async (req, res) => {
+export const signUp = async (req, res) => {   
+  const { firstName, lastName, email, password } = req.body;
+
   //  {server side authentication}
   const adminSchema = z.object({
     firstName: z
@@ -27,7 +29,6 @@ export const signUp = async (req, res) => {
       .json({ errors: validateData.error.issues.map((err) => err.message) });
   }
 
-  const { firstName, lastName, email, password } = req.body;
   const hashedPassword = await bcrypt.hash(password, 10);
 
   try {
