@@ -48,7 +48,7 @@ function Home() {
   const handleLogout = async () => {
     try {
       const response = await axios.get(
-        `${BACKEND_URL}/user/logout`,
+        `${BACKEND_URL}/api/v1/user/logout`,
         {
           withCredentials: true,
         }

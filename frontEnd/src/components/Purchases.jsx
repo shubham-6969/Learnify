@@ -1,13 +1,13 @@
-import axios from 'axios';
-import React, { useEffect, useState } from 'react';
-import toast from 'react-hot-toast';
+import axios from "axios";
+import React, { useEffect, useState } from "react";
+import toast from "react-hot-toast";
 import { FaDiscourse, FaDownload } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
-import { Link, useNavigate } from 'react-router-dom';
+import { Link, useNavigate } from "react-router-dom";
 import { IoLogIn, IoLogOut } from "react-icons/io5";
 import { HiMenu, HiX } from "react-icons/hi";
-import {  RiHome2Fill } from 'react-icons/ri';
-import { BACKEND_URL } from '../../Utils/utils';
+import { RiHome2Fill } from "react-icons/ri";
+import { BACKEND_URL } from "../../Utils/utils";
 
 function Purchases() {
   const [purchases, setPurchase] = useState([]);
@@ -16,9 +16,8 @@ function Purchases() {
   const [errorMessage, setErrorMessage] = useState(true);
 
   const navigate = useNavigate();
- 
 
-  console.log("purchases: ",purchases);
+  console.log("purchases: ", purchases);
   // token
   useEffect(() => {
     const token = localStorage.getItem("user");
@@ -28,44 +27,43 @@ function Purchases() {
       setIsLoggedIn(false);
     }
   }, []);
+  
   // fetcing data from datab
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
+    const user = JSON.parse(localStorage.getItem("user"));
     const token = user.token;
-      const fetchPurchases = async() => {
-      if(!token){
+    
+    const fetchPurchases = async () => {
+      if (!token) {
         setErrorMessage("Please login to view your courses");
         return;
-      } 
-     try {
-       const response = await axios.get(`${BACKEND_URL}/user/purchases/`,  {
+      }
+      try {
+        const response = await axios.get(`${BACKEND_URL}/user/purchases/`, {
           headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
           },
-         withCredentials: true,
-       });
-       // console.log("response from :", response.data)
-      setPurchase(response.data.courseData);
-     } catch (error) {
-     setErrorMessage("Failed to fetch purchase data", error);
-     }
+          withCredentials: true,
+        });
+        // console.log("response from :", response.data)
+        setPurchase(response.data.courseData);
+      } catch (error) {
+        setErrorMessage("Failed to fetch purchase data", error);
+      }
     };
+
     fetchPurchases();
   }, []);
-  
 
- // logout function
+  // logout function
   const handleLogout = async () => {
     try {
-      const response = await axios.get(
-        `${BACKEND_URL}/user/logout`,
-        {
-          withCredentials: true,
-        }
-      );
+      const response = await axios.get(`${BACKEND_URL}/user/logout`, {
+        withCredentials: true,
+      });
       toast.success(response.data.message);
-      localStorage.removeItem("user")
-      navigate('/login');
+      localStorage.removeItem("user");
+      navigate("/login");
       setIsLoggedIn(false);
     } catch (error) {
       console.log("error in logging out", error);
@@ -77,7 +75,7 @@ function Purchases() {
   const toggleSidebar = () => {
     setIsSidebarOpen(!isSidebarOpen);
   };
-  
+
   return (
     <div className="flex h-screen">
       {/* Sidebar */}
@@ -175,7 +173,7 @@ function Purchases() {
                         : purchase.description}
                     </p>
                     <span className="text-green-700 font-semibold text-sm">
-                    &#8377;{purchase.price} only
+                      &#8377;{purchase.price} only
                     </span>
                   </div>
                 </div>
