@@ -23,18 +23,13 @@ function Purchases() {
   // token
 
   useEffect(() => {
- 
-    if (token) {
-      setIsLoggedIn(true);
+    if (!token) {
+      navigate("/login");
     } else {
-      setIsLoggedIn(false);
+      setIsLoggedIn(true);
     }
-  }, [token]);
-
-  if (!token) {
-    navigate("/login");
-  }
-
+  }, [token, navigate]); // Add `navigate` as dependency for safety
+  
 
   useEffect(() => {
     const fetchPurchases = async () => {
