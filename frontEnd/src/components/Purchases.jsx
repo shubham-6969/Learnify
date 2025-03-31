@@ -16,42 +16,44 @@ function Purchases() {
   const [errorMessage, setErrorMessage] = useState(true);
 
   const navigate = useNavigate();
- 
+  const user = JSON.parse(localStorage.getItem("user"));
+  const token = user?.token;
 
   console.log("purchases: ",purchases);
   // token
+
   useEffect(() => {
-    const token = localStorage.getItem("user");
+ 
     if (token) {
       setIsLoggedIn(true);
     } else {
       setIsLoggedIn(false);
     }
-  }, []);
-  // fetcing data from datab
+  }, [token]);
+
+  if (!token) {
+    navigate("/login");
+  }
+
+
   useEffect(() => {
-    const user = JSON.parse(localStorage.getItem('user'));
-    const token = user.token;
-      const fetchPurchases = async() => {
-      if(!token){
-        setErrorMessage("Please login to view your courses");
-        return;
-      } 
-     try {
-       const response = await axios.get(`${BACKEND_URL}/user/purchases/`,  {
+    const fetchPurchases = async () => {
+      try {
+        const response = await axios.get(`${BACKEND_URL}/user/purchases`, {
           headers: {
-            Authorization: `Bearer ${token}`
+            Authorization: `Bearer ${token}`,
           },
-         withCredentials: true,
-       });
-       // console.log("response from :", response.data)
-      setPurchase(response.data.courseData);
-     } catch (error) {
-     setErrorMessage("Failed to fetch purchase data", error);
-     }
+          withCredentials: true,
+        });
+        setPurchase(response.data.courseData);
+      } catch (error) {
+        setErrorMessage("Failed to fetch purchase data", error);
+      }
     };
     fetchPurchases();
-  }, []);
+  }, [token, navigate]);
+
+
   
 
  // logout function
