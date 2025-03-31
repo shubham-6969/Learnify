@@ -24,7 +24,7 @@ function Login() {
             },
           }
         )
-      console.log("Login successful:", response.data)
+      // console.log("Login successful:", response.data)
       toast.success(response.data.message)
       localStorage.setItem("user", JSON.stringify(response.data));
       navigate('/');

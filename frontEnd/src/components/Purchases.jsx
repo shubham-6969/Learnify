@@ -99,7 +99,7 @@ function Purchases() {
               </Link>
             </li>
             <li className="mb-4">
-              <Link to="/purchases" className="flex items-center text-blue-500">
+              <Link to="/purchases" onClick={() => console.log("Navigating to purchases")} className="flex items-center text-blue-500">
                 <FaDownload className="mr-2" /> Purchases
               </Link>
             </li>

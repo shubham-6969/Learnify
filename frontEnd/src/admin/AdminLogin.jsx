@@ -24,7 +24,7 @@ function AdminLogin() {
             },
           }
         )
-      console.log("Login successful:", response.data)
+      // console.log("Login successful:", response.data)
       toast.success(response.data.message);
       localStorage.setItem("admin", JSON.stringify(response.data));
       navigate('/admin/dashboard'); 
