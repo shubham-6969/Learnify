@@ -6,7 +6,7 @@ import Config from "../config.js";
 import { Purchase } from "../models/purchase.model.js";
 import { Course } from "../models/course.model.js";
 
-export const signUp = async (req, res) => {
+export const signup = async (req, res) => {
   //  {server side authentication}
   const userSchema = z.object({
     firstName: z

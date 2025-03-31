@@ -17,7 +17,7 @@ function AdminSignup() {
     e.preventDefault();
 
     try {
-    const response = await axios.post(`${BACKEND_URL}/admin/signUp`,{firstName,lastName,email,password},
+    const response = await axios.post(`${BACKEND_URL}/admin/signup`,{firstName,lastName,email,password},
           {
             withCredentials: true,
             headers: {

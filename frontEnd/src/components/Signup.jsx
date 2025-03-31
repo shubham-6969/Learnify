@@ -17,7 +17,7 @@ function Signup() {
     e.preventDefault();
 
     try {
-    const response = await axios.post(`${BACKEND_URL}/user/signUp`,{firstName,lastName,email,password},
+    const response = await axios.post(`${BACKEND_URL}/user/signup`,{firstName,lastName,email,password},
           {
             withCredentials: true,
             headers: {
