@@ -85,7 +85,7 @@ export const login = async (req, res) => {
 };
 
 // logout function
-export const logout = (req, res) => {
+export const logout = ( _req, res) => {
   try {
     res.clearCookie("jwt");
     res.status(200).json({ message: "logout successful" });
