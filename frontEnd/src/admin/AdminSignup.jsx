@@ -33,7 +33,6 @@ function AdminSignup() {
         setErrorMessage(error.response.data.errors || "Signup failed!!");
       }
     }
-    
   };
 
   return (
