@@ -167,7 +167,7 @@ function Home() {
                       alt=""
                     />
                     <div className="p-6 text-center">
-                      <h2 className="text-xl font-bold text-white">
+                      <h2 className="text-xl font-bold text-white mb-4">
                         {course.title}
                       </h2>
                       <Link to={`/buy/${course._id}`} 
