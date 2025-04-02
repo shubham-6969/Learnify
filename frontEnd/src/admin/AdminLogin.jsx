@@ -28,6 +28,7 @@ function AdminLogin() {
       toast.success(response.data.message);
       localStorage.setItem("admin", JSON.stringify(response.data));
       navigate('/admin/dashboard'); 
+      window.location.reload();
     } catch (error) {
       if (error.response) {
         setErrorMessage(error.response.data.errors || "Login failed!!");
