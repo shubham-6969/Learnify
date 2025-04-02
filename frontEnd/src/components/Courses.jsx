@@ -93,7 +93,7 @@ function Courses() {
               </a>
             </li>
             <li className="mb-4">
-              <a href="#" className="flex items-center text-blue-500">
+              <a href="#" className="flex items-center ">
                 <FaDiscourse className="mr-2" /> Courses
               </a>
             </li>
@@ -107,7 +107,7 @@ function Courses() {
               <Link
                 to="/purchases"
                 onClick={() => console.log("Navigating to purchases")}
-                className="flex items-center text-blue-500"
+                className="flex items-center "
               >
                 <FaDownload className="mr-2" /> Purchases
               </Link>
