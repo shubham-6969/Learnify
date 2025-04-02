@@ -30,7 +30,7 @@ function App(){
      {/* Other Routes */}
      <Route path="/courses" element={<Courses />} />
      <Route path="/purchases" element={<Purchases/>} />
-     {/*<Route path="/buy/:courseId" element={<Buy/>} /> */}
+     {<Route path="/buy/:courseId" element={<Buy/>} />}
 
 
     <Route path="/purchases" element={user ? <Purchases/>:<Navigate to={"/login"}/>} /> 
