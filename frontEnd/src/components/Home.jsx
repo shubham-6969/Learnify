@@ -171,7 +171,7 @@ function Home() {
                         {course.title}
                       </h2>
                       <Link to={`/buy/${course._id}`} 
-                      className="mt-12 bg-orange-500 text-white py-2 px-4 rounded-full hover:bg-blue-500 duration-300"
+                      className="mt-6 bg-orange-500 text-white py-2 px-4 rounded-full hover:bg-blue-500 duration-300"
                       >
                         Enroll Now
                       </Link>
