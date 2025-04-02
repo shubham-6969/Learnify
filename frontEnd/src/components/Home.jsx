@@ -155,7 +155,7 @@ function Home() {
             </Link >
           </div>
         </section>
-        <section>
+        <section className="mt-12">
           <Slider {...settings}>
             {courses.map((course) => (
               <div key={course._id} className="p-4">
