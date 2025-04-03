@@ -21,3 +21,5 @@ Learnify is an _E-commerce Learning Platform_ where users can _purchase courses,
 - _Database:_ MongoDB Atlas
 - _State Management:_ Redux
 - _Hosting:_ Vercel (Frontend), Render (Backend)
+
+Live server link :- https://learnify-zmre.vercel.app
