@@ -19,7 +19,7 @@ function Courses() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [loading, setLoading] = useState(true);
 
-  console.log("courses:", courses);
+ 
   // token
   useEffect(() => {
     const token = localStorage.getItem("user");

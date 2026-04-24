@@ -175,7 +175,7 @@ export const buyCourses = async (req, res) => {
     // if not purchased then create purchase
     
 
-    res.status(201).json({
+    res.status(200).json({
       message: "Course purchased successfully",
       course,
       clientSecret: paymentIntent.client_secret
