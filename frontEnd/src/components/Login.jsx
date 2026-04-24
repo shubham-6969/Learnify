@@ -9,21 +9,22 @@ function Login() {
 
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false)
   const navigate = useNavigate();
-  const [ errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
 
-  const handleSubmit = async(e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-    const response = await axios.post(`${BACKEND_URL}/user/login`,{email,password},
-          {
-            withCredentials: true,
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        )
+      const response = await axios.post(`${BACKEND_URL}/user/login`, { email, password },
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
       // console.log("Login successful:", response.data)
       toast.success(response.data.message)
       localStorage.setItem("user", JSON.stringify(response.data));
@@ -33,7 +34,7 @@ function Login() {
         setErrorMessage(error.response.data.errors || "Login failed!!");
       }
     }
-    
+
   };
 
   return (
@@ -89,13 +90,14 @@ function Login() {
                 required
               />
             </div>
+
             <div className="mb-4">
               <label htmlFor="password" className=" text-gray-400 mb-2">
                 Password
               </label>
               <div className="relative">
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -103,11 +105,15 @@ function Login() {
                   placeholder="********"
                   required
                 />
-                <span className="absolute right-3 top-3 text-gray-500 cursor-pointer">
-                  👁️
+                <span
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-3 inline-block text-2xl cursor-pointer transition-all duration-300 hover:scale-125"
+                >
+                  {showPassword ? "🙈" : "👁️"}
                 </span>
               </div>
             </div>
+
 
             <button
               type="submit"
@@ -115,8 +121,8 @@ function Login() {
             >
               Login
             </button>
-              {/* Error message display */}
-             {errorMessage && <p className="text-red-500 mt-2">{errorMessage}</p>}
+            {/* Error message display */}
+            {errorMessage && <p className="text-red-500 mt-2">{errorMessage}</p>}
           </form>
         </div>
       </div>
