@@ -10,21 +10,21 @@ function Signup() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-  const [ errorMessage, setErrorMessage] = useState("");
+  const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
-  const handleSubmit = async(e)=>{
+  const handleSubmit = async (e) => {
     e.preventDefault();
 
     try {
-    const response = await axios.post(`${BACKEND_URL}/user/signup`,{firstName,lastName,email,password},
-          {
-            withCredentials: true,
-            headers: {
-              "Content-Type": "application/json",
-            },
-          }
-        )
+      const response = await axios.post(`${BACKEND_URL}/user/signup`, { firstName, lastName, email, password },
+        {
+          withCredentials: true,
+          headers: {
+            "Content-Type": "application/json",
+          },
+        }
+      )
       console.log("Signup successful:", response.data)
       toast.success(response.data.message)
       navigate("/login");
@@ -33,7 +33,7 @@ function Signup() {
         setErrorMessage(error.response.data.errors || "Signup failed!!");
       }
     }
-    
+
   };
 
   return (
@@ -130,7 +130,7 @@ function Signup() {
                   placeholder="********"
                   required
                 />
-                <span className="absolute right-3 top-3 text-gray-500 cursor-pointer">
+                <span className="absolute right-3 top-3 text-gray-500 cursor-pointer transition duration-300 ease-in-out hover:scale-110 hover:text-white">
                   👁️
                 </span>
               </div>
@@ -142,8 +142,8 @@ function Signup() {
             >
               Signup
             </button>
-              {/* Error message display */}
-             {errorMessage && <p className="text-red-500 mt-2">{errorMessage}</p>}
+            {/* Error message display */}
+            {errorMessage && <p className="text-red-500 mt-2">{errorMessage}</p>}
           </form>
         </div>
       </div>
