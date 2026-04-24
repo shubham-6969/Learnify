@@ -10,6 +10,7 @@ function Signup() {
   const [lastName, setLastName] = useState("");
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false)
   const [errorMessage, setErrorMessage] = useState("");
   const navigate = useNavigate();
 
@@ -122,7 +123,7 @@ function Signup() {
               </label>
               <div className="relative">
                 <input
-                  type="password"
+                  type={showPassword ? "text" : "password"}
                   id="password"
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
@@ -130,8 +131,11 @@ function Signup() {
                   placeholder="********"
                   required
                 />
-                <span className="absolute right-3 top-3 text-gray-500 cursor-pointer transition duration-300 ease-in-out hover:scale-110 hover:text-white">
-                  👁️
+                <span
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-3 inline-block text-2xl cursor-pointer transition-all duration-300 hover:scale-125"
+                >
+                  {showPassword ? "🙈" : "👁️"}
                 </span>
               </div>
             </div>
