@@ -100,7 +100,7 @@ function Home() {
 
   return (
     <div className="bg-gradient-to-r from-black to-blue-950">
-      <div className=" min-h-screen text-white container mx-auto">
+      <div className=" min-h-screen text-white container w-full px-4 md:px-8">
         {/* Header */}
         <header className="flex items-center justify-between p-4 ">
           <div className="flex items-center space-x-1">
